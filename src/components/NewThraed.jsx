@@ -1,4 +1,5 @@
-import React from 'react';
+
+
 
 export const NewThraed = (props) => {
     const { threadTitle, setThreadTitle, onClickTitle } = props;

@@ -1,25 +1,8 @@
-header {
-  background-color: #63c178;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 16px 32px;
-  color: white;
-}
 
 main {
   background-color: gainsboro;
 }
 
-footer {
-  padding: 64px;
-}
-
-h1 {
-  margin: 0;
-  padding: 0;
-  font-weight: normal;
-}
 
 h2 {
   margin: 0;
@@ -28,9 +11,6 @@ h2 {
   font-weight: normal;
 }
 
-.threadlink {
-  color: white;
-  }
 
 ul {
   list-style: none;

@@ -1,9 +1,13 @@
 import './App.css';
 import { useState, useEffect } from 'react';
 import axios from "axios";
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
+import { Header } from './components/Header';
+import { Footer } from './components/Footer';
 import { NewThraed } from './components/NewThraed'
 import { TreadList } from './components/TreadList'
+import { NotFound } from './components/NotFound';
+
 
 
 function App() {
@@ -32,24 +36,28 @@ function App() {
 
     <BrowserRouter>
 
-      <header>
-        <h1>時計掲示板</h1>
-        <div> <a className="threadlink" href="/thread/new">スレッドを立てる</a></div>
-      </header>
+      <Header />
+      <Switch>
 
-      <Route exact path="/">
-        <TreadList threadGet={threadTitleGet} />
-      </Route>
+        <Route exact path="/">
+          <TreadList threadGet={threadTitleGet} />
+        </Route>
 
-      <Route path="/thread/new">
-        <NewThraed
-          threadTitle={threadTitle}
-          setThreadTitle={setThreadTitle}
-          onClickTitle={onClickTitle}
-        />
-      </Route>
+        <Route path="/thread/new">
+          <NewThraed
+            threadTitle={threadTitle}
+            setThreadTitle={setThreadTitle}
+            onClickTitle={onClickTitle}
+          />
+        </Route>
 
-      <footer></footer>
+        <Route>
+          <NotFound />
+        </Route>
+
+      </Switch>
+
+      <Footer />
 
     </BrowserRouter>
 
@@ -57,4 +65,3 @@ function App() {
 }
 
 export default App;
-

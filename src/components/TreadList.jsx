@@ -1,6 +1,4 @@
 
-import React from 'react';
-
 export const TreadList = (props) => {
     const { threadGet } = props;
 
