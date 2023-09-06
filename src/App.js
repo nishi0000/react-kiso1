@@ -28,8 +28,13 @@ function App() {
 
   //スレッドタイトルをポストする
   const onClickTitle = () => {
-    axios.post('https://2y6i6tqn41.execute-api.ap-northeast-1.amazonaws.com/threads', threadTitleSet);
-    setThreadTitle("");
+    if (threadTitleSet.title === ""){
+      alert("タイトルを入力してください。")
+    }else{
+      axios.post('https://2y6i6tqn41.execute-api.ap-northeast-1.amazonaws.com/threads', threadTitleSet);
+      setThreadTitle("");
+    }
+
   }
 
   return (

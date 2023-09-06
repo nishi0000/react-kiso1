@@ -57,6 +57,7 @@ li+li {
 .inputcontainer{
   display: flex;
   justify-content: space-around;
+  align-items: center;
 }
 
 .inputbutton {

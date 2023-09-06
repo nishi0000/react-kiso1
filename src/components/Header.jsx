@@ -7,7 +7,7 @@ export const Header = () => {
         <>
 
             <Sheader>
-                <Sh1>時計掲示板</Sh1>
+                <Shomelink to="/">時計掲示板</Shomelink>
                 <Slink to="/thread/new">スレッドを立てる</Slink>
             </Sheader>
 
@@ -34,4 +34,13 @@ font-weight: normal;
 
 const Slink = styled(Link)`
 color: white;
+`;
+
+const Shomelink = styled(Link)`
+margin: 0;
+padding: 0;
+color: white;
+font-size: 32px;
+text-decoration: none;
+font-weight: normal;
 `;
