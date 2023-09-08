@@ -1,7 +1,7 @@
 import './App.css';
 import { useState, useEffect } from 'react';
 import axios from "axios";
-import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, Link,useHistory } from 'react-router-dom';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { NewThraed } from './components/NewThraed'
@@ -17,6 +17,7 @@ function App() {
   const threadTitleSet = {
     "title": threadTitle
   };
+  // const history = useHistory();
 
   //スレッド一覧タイトルを取得する
   useEffect(() => {
@@ -37,11 +38,16 @@ function App() {
 
   }
 
+  // const onClickLink = () =>{
+  //   history.push("/thread/new");
+  // }
+
   return (
 
     <BrowserRouter>
 
       <Header />
+      {/* <button onClick={onClickLink}>リンク</button> */}
       <Switch>
 
         <Route exact path="/">
