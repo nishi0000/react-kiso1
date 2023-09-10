@@ -1,77 +1,54 @@
-import './App.css';
-import { useState, useEffect } from 'react';
-import axios from "axios";
-import { BrowserRouter, Route, Switch, Link,useHistory } from 'react-router-dom';
-import { Header } from './components/Header';
-import { Footer } from './components/Footer';
-import { NewThraed } from './components/NewThraed'
-import { TreadList } from './components/TreadList'
-import { NotFound } from './components/NotFound';
-
-
+import { useState, useEffect } from "react";
+import { Link, Route, Routes } from "react-router-dom";
+import "./App.css";
+import { Home } from "./components/home";
+import { NewThread } from "./components/newthread";
+import { Header } from "./components/Header";
+import { NotFound } from "./components/notfournd";
+import { ResList } from "./components/reslist";
+import { GetAllThread } from "./components/getAllThread";
 
 function App() {
+  const [threadtitle, setThreadTitle] = useState([]);
 
-  const [threadTitleGet, setThreadTitleGet] = useState([]); //スレッド一覧を取得するためのstate
-  const [threadTitle, setThreadTitle] = useState(""); //スレッドを作成するためのstate
-  const threadTitleSet = {
-    "title": threadTitle
-  };
-  // const history = useHistory();
-
-  //スレッド一覧タイトルを取得する
   useEffect(() => {
-    axios.get('https://2y6i6tqn41.execute-api.ap-northeast-1.amazonaws.com/threads?offset=0')
-      .then((response) => {
-        setThreadTitleGet(response.data);
-      });
+    const fetchTreadData = async () => {
+      //スレッドタイトル一覧を取得する
+      let data = await GetAllThread(
+        "https://2y6i6tqn41.execute-api.ap-northeast-1.amazonaws.com/threads?offset=0"
+      );
+      setThreadTitle(data);
+    };
+    fetchTreadData();
   }, []);
 
-  //スレッドタイトルをポストする
-  const onClickTitle = () => {
-    if (threadTitleSet.title === ""){
-      alert("タイトルを入力してください。")
-    }else{
-      axios.post('https://2y6i6tqn41.execute-api.ap-northeast-1.amazonaws.com/threads', threadTitleSet);
-      setThreadTitle("");
-    }
-
-  }
-
-  // const onClickLink = () =>{
-  //   history.push("/thread/new");
-  // }
+  console.log(threadtitle);
 
   return (
-
-    <BrowserRouter>
-
+    <>
       <Header />
-      {/* <button onClick={onClickLink}>リンク</button> */}
-      <Switch>
 
-        <Route exact path="/">
-          <TreadList threadGet={threadTitleGet} />
-        </Route>
+      <main>
+        <ul>
+          {threadtitle.map((post, index) => {
+            return (
+              <><Link to={`/thread/${threadtitle[index].id}`}>
+                <li>{threadtitle[index].title}</li>
+                </Link>
+              </>
+            );
+          })}
+        </ul>
+      </main>
 
-        <Route path="/thread/new">
-          <NewThraed
-            threadTitle={threadTitle}
-            setThreadTitle={setThreadTitle}
-            onClickTitle={onClickTitle}
-          />
-        </Route>
-
-        <Route>
-          <NotFound />
-        </Route>
-
-      </Switch>
-
-      <Footer />
-
-    </BrowserRouter>
-
+      <Routes>
+        <Route index element={<Home />} />
+        <Route path="/thread/new"  element={<NewThread />} />
+        <Route path="/thread/:Id"  element={<ResList />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+      <footer></footer>
+    </>
   );
 }
 
