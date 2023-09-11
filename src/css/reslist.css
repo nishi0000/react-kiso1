@@ -1,0 +1,62 @@
+
+.maincontainer {
+    display: flex;
+}
+
+main {
+    flex: 70%;
+}
+
+.test {
+    width: 500px;
+    margin: 0 auto;
+}
+
+.inputarea {
+    flex: 30%;
+}
+
+h2 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: normal;
+}
+
+.reslist {
+    background-color: white;
+    padding: 24px;
+    white-space: pre-line;
+}
+
+.inputarea{
+    display: flex;
+    flex-flow: column;
+    align-items:center;
+    padding-top: 100px;
+
+}
+
+textarea {
+    width: 250px;
+    height: 150px;
+    padding: 8px;
+}
+
+textarea:focus {
+    outline: 0;
+  }
+
+button {
+    width: 150px;
+    margin-top: 16px;
+    color: white;
+    background-color: #63c178;
+    padding: 8px 32px;
+    border-radius: 8px;
+    border:none;
+}
+
+button:hover {
+    opacity: 80%;
+    cursor:pointer;
+  }

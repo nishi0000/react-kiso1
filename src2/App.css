@@ -12,31 +12,6 @@ h2 {
 }
 
 
-ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-
-}
-
-
-li {
-  padding: 32px;
-  margin:0 auto;
-  border: solid 1px black;
-  background-color: white;
-  width: 500px;
-  font-size: 18px;
-
-  
-}
-
-
-li+li {
-  border-top: 0;
-  border-bottom: 1px solid black;
-}
-
 .newthread {
   margin: auto;
   width: 480px;

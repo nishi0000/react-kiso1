@@ -10,7 +10,6 @@ export const Header = () => {
                 <Link to="/thread/new" className="link">スレッドを立てる</Link>
             </header>
 
-
         </>
 
     )
