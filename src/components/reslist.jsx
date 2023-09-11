@@ -9,7 +9,7 @@ export const ResList = () => {
   const [resList, setResList] = useState("");
   const [threadTitleGet, setThreadTitleGet] = useState("");
   const [loading, setLoading] = useState(false);
-  const [res, setRes] = useState("");
+  const [res, setRes] = useState([]);
   const resInput = {
     post: res,
   };
@@ -18,10 +18,12 @@ export const ResList = () => {
 
   useEffect(() => {
     const fetchTreadData = async () => {
+      //スレッドタイトル一覧取得
       let data = await GetAllThread(
         "https://2y6i6tqn41.execute-api.ap-northeast-1.amazonaws.com/threads?offset=0"
       );
       setThreadTitleGet(data);
+      //該当スレッドのレスを取得
       let res = await GetAllThread(
         `https://2y6i6tqn41.execute-api.ap-northeast-1.amazonaws.com/threads/${params.Id}/posts`
       );
@@ -41,11 +43,21 @@ export const ResList = () => {
     });
   }
 
-  //スレッドタイトルをポストする
+  console.log(resList);
+
+  // if(resList.posts.length === 0){
+  //   axios.post(
+  //     `https://2y6i6tqn41.execute-api.ap-northeast-1.amazonaws.com/threads/${resList.threadId}/posts`,
+  //     resInput
+  //   );
+
+  // }
+
+  //レスをポストする
   const onClickResSet = () => {
-    if (resInput.title === "") {
+    if (resInput.post === "") {
       alert("投稿内容を入力してください。");
-    } else {
+    } else{
       axios.post(
         `https://2y6i6tqn41.execute-api.ap-northeast-1.amazonaws.com/threads/${resList.threadId}/posts`,
         resInput
@@ -55,7 +67,6 @@ export const ResList = () => {
     }
   };
 
-  console.log(resList);
 
   return (
     <>
@@ -75,7 +86,7 @@ export const ResList = () => {
               </p>
             ) : (
               resList.posts.map((data, index) => {
-                return <p className="reslist">{resList.posts[index].post}</p>;
+                return <p key={index} className="reslist">{resList.posts[index].post}</p>;
               })
             )}
             </div>

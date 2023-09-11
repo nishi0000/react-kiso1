@@ -1,37 +1,42 @@
 
+.threadh2 {
+  margin-top: 36px;
+  font-size: 24px;
+  font-weight: normal;
+}
+
+
 .newthread {
-    margin: auto;
-    width: 480px;
-    text-align: center;
-  }
-  
-  .inputtitle {
-    width: 320px;
-    padding: 16px;
-    margin: 48px;
-  
-  }
-  
-  .inputtitle:focus {
-    outline: 0;
-  }
-  
-  .inputcontainer{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-  }
-  
-  .inputbutton {
-    color: white;
-    background-color: #63c178;
-    padding: 8px 32px;
-    border-radius: 8px;
-    border:none;
-  
-  }
-  
-  .inputbutton:hover {
-    opacity: 80%;
-    cursor:pointer;
-  }
+  margin: auto;
+  width: 480px;
+  text-align: center;
+}
+
+.inputtitle {
+  width: 320px;
+  padding: 16px;
+  margin: 48px;
+}
+
+.inputtitle:focus {
+  outline: 0;
+}
+
+.inputcontainer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.inputbutton {
+  color: white;
+  background-color: #63c178;
+  padding: 8px 32px;
+  border-radius: 8px;
+  border: none;
+}
+
+.inputbutton:hover {
+  opacity: 80%;
+  cursor: pointer;
+}

@@ -1,36 +1,34 @@
 import axios from "axios";
 import { useState } from "react";
-import "../css/newthread.css"
+import "../css/newthread.css";
 import { useNavigate } from "react-router-dom";
 
 export const NewThread = () => {
-
   const [threadTitlePost, setThreadTitlePost] = useState(""); //スレッドを作成するためのstate
   const threadTitleSet = {
     title: threadTitlePost,
   };
   const navigate = useNavigate();
 
-      //スレッドタイトルをポストする
-      const onClickTitle = () => {
-        if (threadTitleSet.title === "") {
-          alert("タイトルを入力してください。");
-        } else {
-          axios.post(
-            "https://2y6i6tqn41.execute-api.ap-northeast-1.amazonaws.com/threads",
-            threadTitleSet
-          );
-          setThreadTitlePost("");
-          // navigate("/");
-    
-        }
-      };
-
+  //スレッドタイトルをポストする
+  const onClickTitle = () => {
+    if (threadTitleSet.title === "") {
+      alert("タイトルを入力してください。");
+    } else {
+      axios.post(
+        "https://2y6i6tqn41.execute-api.ap-northeast-1.amazonaws.com/threads",
+        threadTitleSet
+      );
+      setThreadTitlePost("");
+      navigate("/");
+      window.location.reload();
+    }
+  };
 
   return (
     <>
       <div className="newthread">
-        <h2>スレッド新規作成</h2>
+        <h2 className="threadh2">スレッド新規作成</h2>
         <input
           className="inputtitle"
           placeholder="スレッドタイトル"

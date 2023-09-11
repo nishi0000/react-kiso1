@@ -4,16 +4,16 @@
 }
 
 main {
-    flex: 70%;
+    flex: 60%;
 }
 
 .test {
-    width: 500px;
+    width: 600px;
     margin: 0 auto;
 }
 
 .inputarea {
-    flex: 30%;
+    flex: 40%;
 }
 
 h2 {
@@ -60,3 +60,19 @@ button:hover {
     opacity: 80%;
     cursor:pointer;
   }
+
+
+  @media only screen and (max-width:800px) {
+    .maincontainer {
+        display: flex;
+        flex-flow: column;
+    }
+
+    textarea {
+        width: 500px;
+        height: 150px;
+        padding: 8px;
+    }
+    
+
+}
